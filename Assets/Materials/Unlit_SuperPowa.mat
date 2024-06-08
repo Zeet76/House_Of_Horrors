@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_SuperPowa
+  m_Shader: {fileID: 4800000, guid: 3877f3563d204d44c8c189b899529eb3, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _USENORMALMAP_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseTex:
+        m_Texture: {fileID: 2800000, guid: e866d03c1142882459497cd474bc4190, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DisplacementTexture:
+        m_Texture: {fileID: 2800000, guid: d9dc5b9421500684aa9404573a0b0a3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveMap:
+        m_Texture: {fileID: 2800000, guid: 9381bc5f3c8922d4a81f90565cfb7d4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: 9381bc5f3c8922d4a81f90565cfb7d4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortTex:
+        m_Texture: {fileID: 2800000, guid: d9dc5b9421500684aa9404573a0b0a3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionTex:
+        m_Texture: {fileID: 2800000, guid: d9dc5b9421500684aa9404573a0b0a3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e866d03c1142882459497cd474bc4190, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: e866d03c1142882459497cd474bc4190, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 703c038fef231cc48810a05817ee6577, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMapTexture:
+        m_Texture: {fileID: 2800000, guid: 703c038fef231cc48810a05817ee6577, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _DisplacementIntensity: 1.2
+    - _DissolveAmount: 1
+    - _DissolveThreshold: 1
+    - _DistortIntensity: 3.58
+    - _DistortionStrength: 2.9
+    - _EdgeIntensity: 2.32
+    - _EdgeSharpness: 1.35
+    - _FresnelIntensity: 0.62
+    - _FresnelPower: 1.49
+    - _FresnelRamp: 1.35
+    - _InnerEdgeIntensity: 1.26
+    - _InnerEdgeSharpness: 2.5
+    - _InnerGlowExponent: 6.25
+    - _InnerGlowPower: 6.66
+    - _InvFresnelIntensity: 9.03
+    - _InvFresnelRamp: 8.37
+    - _OuterGlowExponent: 3.78
+    - _OuterGlowPower: 4.37
+    - _UseNormalMap: 1
+    m_Colors:
+    - _EdgeColor: {r: 1, g: 0.9537872, b: 0.23113209, a: 1}
+    - _FresnelColor: {r: 0.09411764, g: 0.20756373, b: 0.94509804, a: 1}
+    - _InnerEdgeColor: {r: 0.5, g: 0.03066039, b: 0.03066039, a: 1}
+    - _InnerGlowColor: {r: 0, g: 0.21728897, b: 1, a: 1}
+    - _InvFresnelColor: {r: 1, g: 0, b: 0, a: 1}
+    - _OuterGlowColor: {r: 1, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
