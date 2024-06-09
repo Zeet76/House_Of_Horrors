@@ -49,8 +49,8 @@ Shader "Custom/DissolvingWindow"
             }
 
             o.Albedo = c.rgb;
-            o.Alpha = 0.75;            
-            o.Smoothness = specGloss.r * _Glossiness; 
+            o.Alpha = 0.66;            
+            o.Smoothness = specGloss; 
         }
         ENDCG
         

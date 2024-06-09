@@ -41,6 +41,10 @@ Shader "Custom/BurningPaper"
             float noise = burn.r;
             fixed steppedNoise = step(_Glossiness, noise);
 
+            fixed4 orange = float4(1, 0.2, 0, 1);
+            fixed4 grey = float4(0.2, 0.2, 0.2, 0.2);
+
+
             if (steppedNoise < 1.0)
             {
                 discard;
@@ -50,8 +54,6 @@ Shader "Custom/BurningPaper"
             float outlineWidth = 0.01;
             float outlineStep1 = step(_Glossiness + outlineWidth, noise);
             float outlineStep2 = step(_Glossiness + 2 * outlineWidth, noise);
-            fixed4 orange = float4(1, 0.2, 0, 1);
-            fixed4 grey = float4(0.2, 0.2, 0.2, 0.2);
             
             // Blinking effect
             float blinkSpeed = 5.0;
