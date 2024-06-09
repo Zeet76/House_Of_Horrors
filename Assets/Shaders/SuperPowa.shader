@@ -14,9 +14,6 @@ Shader "Unlit/SuperPowa"
         _InnerGlowPower ("Inner Glow Power", Range(0,10)) = 0
         _InnerGlowExponent ("Inner Glow Exponent", Range(0,10)) = 0
 
-        _DissolveMap ("Dissolve Map", 2D) = "white" {}
-        _DissolveThreshold ("Dissolve Threshold", Range(0,1)) = 0
-
         [Toggle] _UseNormalMap ("Use Normal Map", float) = 0
         _NormalMap ("Normal Map", 2D) = "white" {}
     }
@@ -54,7 +51,6 @@ Shader "Unlit/SuperPowa"
 
             sampler2D _BaseTex;
             sampler2D _DistortionTex;
-            sampler2D _DissolveMap;
             sampler2D _NormalMap;
 
             float4 _BaseTex_ST;
@@ -66,7 +62,6 @@ Shader "Unlit/SuperPowa"
             float _DistortionStrength;
             float _InnerGlowExponent;
             float _InnerGlowPower;
-            float _DissolveThreshold;
 
             v2f vert (appdata v)
             {
@@ -86,9 +81,6 @@ Shader "Unlit/SuperPowa"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float dissolveValue = tex2D(_DissolveMap, i.uv).r;
-                float mask = step(dissolveValue, _DissolveThreshold);
-
                 float distortionValue = tex2D(_DistortionTex, i.uv + _Time.xx).r;
 
                 float3 finalNormal = i.normal;
@@ -108,10 +100,9 @@ Shader "Unlit/SuperPowa"
                 float3 innerGlowColor = innerGlowAmount * _InnerGlowColor;
 
                 float3 finalColor = outerGlowColor + innerGlowColor;
-                return fixed4(finalColor * mask, mask);
+                return fixed4(finalColor, 1);
             }
             ENDCG
         }
     }
 }
-
