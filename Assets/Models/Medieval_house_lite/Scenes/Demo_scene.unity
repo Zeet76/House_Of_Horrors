@@ -5094,7 +5094,7 @@ GameObject:
   - component: {fileID: 433924456}
   - component: {fileID: 433924460}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Fresnel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5324,6 +5324,7 @@ GameObject:
   - component: {fileID: 1183157814}
   - component: {fileID: 1183157813}
   - component: {fileID: 1183157816}
+  - component: {fileID: 1183157817}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5421,6 +5422,19 @@ MonoBehaviour:
   glitchTime: 3
   maxOffsetVariation: 0.1
   blurAmount: 0.8
+--- !u!114 &1183157817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183157812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07eb2a6b2a290d4da734ca0e56dcd74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightVisionMaterial: {fileID: 2100000, guid: 83316dbb285bbe9479191b0928d838b1, type: 2}
 --- !u!1 &1268888877
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,7 +5448,7 @@ GameObject:
   - component: {fileID: 1268888879}
   - component: {fileID: 1268888878}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
