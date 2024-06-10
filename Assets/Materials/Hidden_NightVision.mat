@@ -32,7 +32,7 @@ Material:
     - _Brightness: 1
     - _Contrast: 1
     - _Saturation: 1
-    - _TransitionFactor: 1.1
+    - _TransitionFactor: -0.1
     m_Colors:
     - _Color1: {r: 0.08276967, g: 0.5660378, b: 0.41542748, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
