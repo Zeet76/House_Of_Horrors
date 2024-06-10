@@ -76,12 +76,12 @@ Shader "Unlit/Ghost"
                 #endif
 
                 float fresnelAmount = 1 - max(0,dot(finalNormal, i.viewDir));
-                fresnelAmount = pow(fresnelAmount, _FresnelRamp);
-                float3 fresnelColor = mul(fresnelAmount * _FresnelColor, _FresnelIntensity);
+                fresnelAmount = pow(fresnelAmount, _FresnelRamp) * _FresnelIntensity;
+                float3 fresnelColor = fresnelAmount * _FresnelColor;
     
                 float invfresnelAmount = max(0,dot(finalNormal, i.viewDir));
-                invfresnelAmount = pow(invfresnelAmount, _InvFresnelRamp);
-                float3 invfresnelColor = mul(invfresnelAmount * _InvFresnelColor, _InvFresnelIntensity);
+                invfresnelAmount = pow(invfresnelAmount, _InvFresnelRamp) * _InvFresnelIntensity;
+                float3 invfresnelColor = invfresnelAmount * _InvFresnelColor;
                 float3 finalColor = fresnelColor + invfresnelColor;
                 return fixed4(finalColor, 1);   
             }

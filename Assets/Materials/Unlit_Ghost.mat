@@ -41,10 +41,10 @@ Material:
     - NORMAL_MAP: 1
     - _DistortIntensity: 1.2
     - _FresnelIntensity: 2.1
-    - _FresnelRamp: 5.1
-    - _InvFresnelIntensity: 1
-    - _InvFresnelRamp: 62
+    - _FresnelRamp: 5.15
+    - _InvFresnelIntensity: 0.334
+    - _InvFresnelRamp: 100
     m_Colors:
-    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 0.31132078, g: 0.20705768, b: 0.20705768, a: 1}
     - _InvFresnelColor: {r: 0.8679245, g: 0.20060521, b: 0.20060521, a: 1}
   m_BuildTextureStacks: []
