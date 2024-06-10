@@ -4,7 +4,7 @@ Shader "Hidden/NightVision"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _Resolution ("Resolution", Vector) = (1920, 1080, 0, 0)
-        _TransitionFactor ("Transition Factor", Range(0, 1)) = 0.0
+        _TransitionFactor ("Transition Factor", Range(-0.1, 1.1)) = 0.0
         _Color1 ("Color 1", Color) = (1, 1, 1, 1)
         _Color2 ("Color 2", Color) = (1, 1, 1, 1)
     }
@@ -112,20 +112,17 @@ Shader "Hidden/NightVision"
                     }
                 }
 
-                result /= 4.0;
-
-                // Apply horizontal transition effect
-                float2 uvTransition = fragCoord / _Resolution.xy;
-                result *= smoothstep(_TransitionFactor - 0.1, _TransitionFactor + 0.1, uvTransition.x);
-
+                result /= 4.0;                       
                 return result;
             }
 
             fixed4 frag(v2f i) : SV_Target
             {
+                float3 col = tex2D(_MainTex, i.uv);
                 float2 fragCoord = i.uv * _Resolution.xy;
                 float3 color = mainImage(fragCoord);
-                return fixed4(color, 1.0);
+                float transition = smoothstep(_TransitionFactor - 0.1, _TransitionFactor + 0.1, fragCoord.x / _Resolution.x);
+                return fixed4(lerp(col, color, transition), 1.0);            
             }
             ENDCG
         }

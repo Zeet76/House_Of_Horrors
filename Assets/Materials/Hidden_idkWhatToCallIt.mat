@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden_NightVision
-  m_Shader: {fileID: 4800000, guid: 5d06073be6593bc4ba2f3a7f05be4d72, type: 3}
+  m_Name: Hidden_idkWhatToCallIt
+  m_Shader: {fileID: 4800000, guid: f7f34a83b4a8b764a92f2aeab647150a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,12 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 1
-    - _Contrast: 1
-    - _Saturation: 1
-    - _TransitionFactor: 1.1
-    m_Colors:
-    - _Color1: {r: 0.08276967, g: 0.5660378, b: 0.41542748, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
-    - _Resolution: {r: 3840, g: 2160, b: 0, a: 0}
+    - _CenterX: 0.25
+    - _CenterY: 0.25
+    - _Radius: 0.25
+    - _Sharpness: 0
+    m_Colors: []
   m_BuildTextureStacks: []

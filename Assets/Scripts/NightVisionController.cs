@@ -7,7 +7,7 @@ public class NightVisionController : MonoBehaviour
     public Material nightVisionMaterial; // Assign the night vision material in the Inspector
 
     private bool isNightVisionActive = false;
-    private float transitionProgress = 0.0f;
+    private float transitionProgress = -0.1f;
     private float transitionDuration = 3.0f; // 3 seconds
 
     void Update()
@@ -16,7 +16,7 @@ public class NightVisionController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             isNightVisionActive = !isNightVisionActive;
-            transitionProgress = 0.0f; // Reset transition progress
+            transitionProgress = -0.1f; // Reset transition progress
         }
 
         // Increment or decrement transition progress based on night vision activation
@@ -38,7 +38,7 @@ public class NightVisionController : MonoBehaviour
         if (nightVisionMaterial != null)
         {
             // Calculate transition factor based on transition progress and duration
-            float transitionFactor = Mathf.SmoothStep(0.0f, 1.0f, transitionProgress / transitionDuration);
+            float transitionFactor = Mathf.SmoothStep(-0.1f, 1.1f, transitionProgress / transitionDuration);
             nightVisionMaterial.SetFloat("_TransitionFactor", transitionFactor);
             Graphics.Blit(src, dest, nightVisionMaterial);
         }
