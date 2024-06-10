@@ -1,5 +1,6 @@
 Shader "Custom/WeirdMirror" {
     Properties {
+        // Define shader properties with default values
         _Intensity ("Distortion Intensity", Range(0, 50)) = 0
         [Toggle] _UseDistortion ("Use Distortion", float) = 0
 
@@ -19,10 +20,13 @@ Shader "Custom/WeirdMirror" {
     }
 
     SubShader {
+        // Define the rendering order and type
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        // Grab the current screen content to _GrabTexture
         GrabPass { "_GrabTexture" }
 
         Pass {
+            // Disable writing to the depth buffer and set blending mode
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
 
@@ -31,6 +35,7 @@ Shader "Custom/WeirdMirror" {
             #pragma fragment frag
             #include "UnityCG.cginc"
 
+            // Function to generate Perlin noise
             float2 PerlinNoise(float2 uv, float time) {
                 return float2(
                     frac(sin(dot(uv, float2(12.9898, 78.233)) + time) * 43758.5453),
@@ -38,12 +43,14 @@ Shader "Custom/WeirdMirror" {
                 );
             }
 
+            // Define the structure to pass data from vertex to fragment shader
             struct v2f {
                 float4 pos : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 grabPos : TEXCOORD1;
             };
 
+            // Define shader properties
             sampler2D _GrabTexture;
             float _Intensity;
             float _PixelNumberX;
@@ -60,6 +67,7 @@ Shader "Custom/WeirdMirror" {
             float _NoiseSpeed;
             float4 _MainTex_ST;
 
+            // Vertex shader
             v2f vert(appdata_base v) {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
@@ -68,6 +76,7 @@ Shader "Custom/WeirdMirror" {
                 return o;
             }
 
+            // Fragment shader
             half4 frag(v2f i) : SV_Target {
                 float2 grabUV = i.grabPos.xy / i.grabPos.w;
                 half4 baseColor = tex2D(_GrabTexture, grabUV);
@@ -111,8 +120,16 @@ Shader "Custom/WeirdMirror" {
                     } else if (baseColor.r > 0.9 && baseColor.g > 0.9) {
                         // Replace yellows with blues
                         baseColor.rgb = float3(0.0, 0.0, 1.0);
+                    } else if (baseColor.r > 0.9 && baseColor.b > 0.9) {
+                        // Replace reds with greens
+                        baseColor.rgb = float3(0.0, 1.0, 0.0);
+                    } else if (baseColor.g > 0.9 && baseColor.b > 0.9) {
+                        // Replace blues with purples
+                        baseColor.rgb = float3(1.0, 0.0, 1.0);
+                    } else if (baseColor.r > 0.9) {
+                        // Replace browns with yellows
+                        baseColor.rgb = float3(1.0, 1.0, 0.0);
                     }
-                    // Add more color replacement conditions here if needed
                 }
 
                 // Apply noise effect
@@ -134,5 +151,6 @@ Shader "Custom/WeirdMirror" {
             ENDCG
         }
     }
+    // Use Diffuse shader as a fallback
     FallBack "Diffuse"
 }
