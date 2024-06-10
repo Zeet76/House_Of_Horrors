@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden_NightVision
-  m_Shader: {fileID: 4800000, guid: 5d06073be6593bc4ba2f3a7f05be4d72, type: 3}
+  m_Name: StraightLines
+  m_Shader: {fileID: 4800000, guid: e0574d01cc8434f4a83dd83a262d9d80, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,17 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: aa1da161668c2204eb8ae1cf5b9345ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Brightness: 1
-    - _Contrast: 1
-    - _Saturation: 1
-    - _TransitionFactor: 0
+    m_Floats: []
     m_Colors:
-    - _Color1: {r: 1, g: 0.23272236, b: 0, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
-    - _Resolution: {r: 3840, g: 2160, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
