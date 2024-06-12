@@ -32,11 +32,11 @@ Material:
     m_Floats:
     - _EnableExtrude: 4.12
     - _ExtrudeTime: 8.35
-    - _Factor: 0.02
+    - _Factor: 1
     - _Gravity: 5.58
     - _MaxFactor: 1
     - _MinFactor: 0.1
-    - _Speed: 1
+    - _Speed: 4
     - _TimeFactor: 9.13
     - _Toggle: 1
     m_Colors: []
