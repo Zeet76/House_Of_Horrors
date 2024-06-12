@@ -15,8 +15,8 @@ public class BurningPaper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If the space key is pressed, start burning the paper
-        if (Input.GetKeyDown(KeyCode.Space))
+        // If the H key is pressed, start burning the paper
+        if (Input.GetKeyDown(KeyCode.H))
         {
             isBurning = true;
         }
