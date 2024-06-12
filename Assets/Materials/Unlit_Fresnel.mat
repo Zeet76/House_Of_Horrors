@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_Fresnel
+  m_Shader: {fileID: 4800000, guid: 2e1201d8d0e255b46a5f408a1a2210ce, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - NORMAL_MAP_ON
+  - _USENORMALMAP_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseTex:
+        m_Texture: {fileID: 2800000, guid: caded16b2950be940991a2b25d15d283, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortTex:
+        m_Texture: {fileID: 2800000, guid: d9dc5b9421500684aa9404573a0b0a3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionTex:
+        m_Texture: {fileID: 2800000, guid: d9dc5b9421500684aa9404573a0b0a3f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: caded16b2950be940991a2b25d15d283, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 5a6831820986f57488a6b0604569d7c6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - NORMAL_MAP: 1
+    - _DistortIntensity: 0.85
+    - _DistortionStrength: 0.85
+    - _FresnelIntensity: 4.8
+    - _FresnelRamp: 1.5
+    - _InnerGlowExponent: 3.3
+    - _InnerGlowPower: 4.2
+    - _InvFresnelIntensity: 4.2
+    - _InvFresnelRamp: 3.3
+    - _OuterGlowExponent: 1.5
+    - _OuterGlowPower: 4.8
+    - _UseNormalMap: 1
+    m_Colors:
+    - _FresnelColor: {r: 0.8066038, g: 0.99539536, b: 1, a: 1}
+    - _InnerGlowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _InvFresnelColor: {r: 1, g: 0.047002554, b: 0, a: 1}
+    - _OuterGlowColor: {r: 0.6273585, g: 0.99666005, b: 1, a: 1}
+  m_BuildTextureStacks: []

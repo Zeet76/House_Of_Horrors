@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 1183157813}
   - component: {fileID: 1183157816}
   - component: {fileID: 1183157817}
+  - component: {fileID: 1183157818}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -472,7 +473,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07eb2a6b2a290d4da734ca0e56dcd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nightVisionMaterial: {fileID: 2100000, guid: 83316dbb285bbe9479191b0928d838b1, type: 2}
+  NightVisionMaterial: {fileID: 2100000, guid: 83316dbb285bbe9479191b0928d838b1, type: 2}
+  TransitionSpeed: 1
+--- !u!114 &1183157818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183157812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640dcb44e979a544085969abaa6a6567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 006325791f5e2544a84303c5d7fd57c0, type: 2}
+  animationDuration: 2
 --- !u!1 &1268888877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,6 +3406,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3013602164025615187}
+  - component: {fileID: 3013602164025615189}
+  - component: {fileID: 3013602164025615188}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -4123,6 +4141,32 @@ Transform:
   - {fileID: 7328253250919537710}
   m_Father: {fileID: 1897081911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3013602164025615188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493208170263493097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daa40c70600eea4f8cade1ee62d8e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowMaterial: {fileID: 2100000, guid: bcfd29ca2dd1eb44186497651382d54a, type: 2}
+--- !u!114 &3013602164025615189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2493208170263493097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f718a4a6d28eaba4f907e8c720425faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperMaterial: {fileID: 2100000, guid: 9c939e3f9e005844b83aa2f0ae27e23e, type: 2}
 --- !u!1 &3022917967290397662
 GameObject:
   m_ObjectHideFlags: 0

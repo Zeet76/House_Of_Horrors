@@ -1,69 +1,66 @@
 using UnityEngine;
 
+// This script requires a Camera component to be attached to the same GameObject
+[RequireComponent(typeof(Camera))]
 public class NightVisionController : MonoBehaviour
 {
-    // The material to be used for night vision effect
-    public Material nightVisionMaterial; 
+    // Public variable to assign the NightVision Material in the Inspector
+    public Material NightVisionMaterial;
 
-    // Flag to check if night vision is active
-    private bool isNightVisionActive = false;
+    // Public variable to control the transition speed of the NightVision effect
+    public float TransitionSpeed = 1.0f;
+    // Private variables to control the NightVision effect
+    private bool isNightVisionOn = false;
+    private float transitionFactor = 0.0f;
 
-    // Variables to control the transition of the night vision effect
-    private float transitionProgress = 0.0f;
-    private float transitionDuration = 3.0f; 
-
-    void Update()
+    // Start is called before the first frame update
+    private void Start()
     {
-        // Check if the 'O' key is pressed
+        // Initialize NightVision as off and transition factor as 1.0f
+        isNightVisionOn = false;
+        transitionFactor = 1.0f;
+
+        // Set the initial values of the shader properties
+        NightVisionMaterial.SetInt("_IsNightVisionOn", isNightVisionOn ? 1 : 0);
+        NightVisionMaterial.SetFloat("_TransitionFactor", transitionFactor);
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        // Toggle NightVision on/off when the 'O' key is pressed
         if (Input.GetKeyDown(KeyCode.O))
         {
-            // Toggle the night vision active state
-            isNightVisionActive = !isNightVisionActive;
-
-            // Reset the transition progress based on the night vision state
-            transitionProgress = isNightVisionActive ? transitionDuration : 0.0f; 
+            isNightVisionOn = !isNightVisionOn;
+            NightVisionMaterial.SetInt("_IsNightVisionOn", isNightVisionOn ? 1 : 0);
         }
 
-        // Update the transition progress based on the night vision state
-        UpdateTransitionProgress();
-    }
-
-    // Method to update the transition progress
-    private void UpdateTransitionProgress()
-    {
-        // If night vision is active and transition is not complete, decrease the progress
-        if (isNightVisionActive && transitionProgress > 0.0f)
+        // Update the transition factor based on whether NightVision is on or off
+        if (isNightVisionOn)
         {
-            transitionProgress -= Time.deltaTime;
-        }
-        // If night vision is not active and transition is not complete, increase the progress
-        else if (!isNightVisionActive && transitionProgress < transitionDuration)
-        {
-            transitionProgress += Time.deltaTime;
-        }
-
-        // Clamp the transition progress to ensure it stays within [0, transitionDuration]
-        transitionProgress = Mathf.Clamp(transitionProgress, 0, transitionDuration);
-    }
-
-    void OnRenderImage(RenderTexture src, RenderTexture dest)
-    {
-        // If the night vision material is assigned
-        if (nightVisionMaterial != null)
-        {
-            // Calculate the transition factor
-            float transitionFactor = Mathf.SmoothStep(-0.1f, 1.1f, transitionProgress / transitionDuration);
-
-            // Set the transition factor in the material
-            nightVisionMaterial.SetFloat("_TransitionFactor", transitionFactor);
-
-            // Apply the material to the source texture and output to the destination texture
-            Graphics.Blit(src, dest, nightVisionMaterial);
+            transitionFactor = Mathf.Clamp01(transitionFactor - Time.deltaTime * TransitionSpeed);
         }
         else
         {
-            // If no night vision material is assigned, just copy the source texture to the destination
-            Graphics.Blit(src, dest);
+            transitionFactor = Mathf.Clamp01(transitionFactor + Time.deltaTime * TransitionSpeed);
+        }
+
+        // Update the shader property with the new transition factor
+        NightVisionMaterial.SetFloat("_TransitionFactor", transitionFactor);
+    }
+
+    // Called after all rendering is complete to render image
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        // If the NightVision Material is assigned, use it to render the image
+        if (NightVisionMaterial != null)
+        {
+            Graphics.Blit(source, destination, NightVisionMaterial);
+        }
+        // Otherwise, render the image without any effect
+        else
+        {
+            Graphics.Blit(source, destination);
         }
     }
 }
