@@ -13,6 +13,8 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
+  - _USECOLOREFFECT_ON
+  - _USEDISTORTION_ON
   - _USEJELLY_ON
   - _USETRIANGLEMOSAIC_ON
   m_LightmapFlags: 4
@@ -36,8 +38,8 @@ Material:
     - _PixelNumberX: 250
     - _PixelNumberY: 250
     - _Saturation: 3
-    - _UseColorEffect: 0
-    - _UseDistortion: 0
+    - _UseColorEffect: 1
+    - _UseDistortion: 1
     - _UseNoise: 0
     - _UsePixelation: 0
     m_Colors: []
