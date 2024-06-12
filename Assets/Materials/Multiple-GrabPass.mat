@@ -27,15 +27,15 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Brightness: 1
-    - _ColorSpeed: 1
-    - _Intensity: 0
-    - _NoiseIntensity: 0
+    - _Brightness: 3
+    - _ColorSpeed: 3
+    - _Intensity: 10
+    - _NoiseIntensity: 1
     - _NoiseScale: 1
     - _NoiseSpeed: 1
-    - _PixelNumberX: 500
-    - _PixelNumberY: 500
-    - _Saturation: 1
+    - _PixelNumberX: 250
+    - _PixelNumberY: 250
+    - _Saturation: 3
     - _UseColorEffect: 0
     - _UseDistortion: 0
     - _UseNoise: 0
