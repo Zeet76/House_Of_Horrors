@@ -35,9 +35,9 @@ Material:
     m_Floats:
     - _Brightness: 1
     - _Contrast: 1
-    - _IsNightVisionOn: 1
+    - _IsNightVisionOn: 0
     - _Saturation: 1
-    - _TransitionFactor: 0
+    - _TransitionFactor: 1
     - _TransitionSpeed: 0.1
     m_Colors:
     - _Color1: {r: 0.08276967, g: 0.5660378, b: 0.41542748, a: 1}
