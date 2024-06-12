@@ -7,6 +7,7 @@ public class Ending : MonoBehaviour
     private float _radius = 1.0f; // Initial radius value
     private bool isClosing = false; // Flag to check if the closing effect is happening
     public float animationDuration = 3.0f; // Duration for the closing effect, can be set in Unity inspector
+    public GameObject lastCanvas;
 
     void Start()
     {
@@ -22,6 +23,11 @@ public class Ending : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !isClosing)
         {
             StartCoroutine(ClosingScene());
+            if(lastCanvas != null && lastCanvas.activeSelf)
+            {
+                lastCanvas.SetActive(false);
+            }
+            
         }
     }
 
