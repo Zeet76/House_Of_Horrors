@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127bd75fe7308a7419e69c1acb088880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growMaterial: {fileID: 2100000, guid: 6b1b000b4a271cd4c854b6c544f1232e, type: 2}
+  growMaterial: {fileID: 2100000, guid: 0a533a52e6dc60a46a0d3ea77d16539b, type: 2}
   growDuration: 0.3
   growIterations: 10000
 --- !u!1 &1183157812
@@ -5793,7 +5793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f3de960fd206f448bc59fb9002853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newMaterial: {fileID: 2100000, guid: 6b1b000b4a271cd4c854b6c544f1232e, type: 2}
+  newMaterial: {fileID: 2100000, guid: 0a533a52e6dc60a46a0d3ea77d16539b, type: 2}
   changeDelay: 2
 --- !u!1 &4542443400055700550
 GameObject:
