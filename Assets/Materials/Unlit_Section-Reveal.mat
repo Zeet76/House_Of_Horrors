@@ -28,14 +28,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: be687610f6a1a994b8f6aef628e1bdd9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 300026067d147f440a6589a5faa52707, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _EdgeWidth: 0.9
     - _Slider: 0.73
-    - _Val: 5.4
+    - _Val: 2.39
     m_Colors:
     - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0.6666667}
