@@ -1,96 +1,109 @@
 Shader "Unlit/GhostEffect"
 {
+    // Define the properties that can be set in the material inspector in Unity
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _BaseTex ("Base Texture", 2D) = "white" {} // Main texture
 
-        _DistortTex ("Distort Texture", 2D) = "white" {}
-        _DistortIntensity("Distort Intensity", Range(0,1)) = 0
+        _DistortionTex ("Distortion Texture", 2D) = "white" {} // Distortion texture
+        _DistortionStrength ("Distortion Strength", Range(0,10)) = 0 // Intensity of the distortion
 
-        _FresnelColor ("Fresnel Color", Color) = (1,1,1,1)
-        _FresnelIntensity("Fresnel Intensity", Range(0,10)) = 0
-        _FresnelRamp("Fresnel Ramp", Range(0,10)) = 0
+        _OuterGlowColor ("Outer Glow Color", Color) = (1,1,1,1) // Color of the outer glow
+        _OuterGlowPower ("Outer Glow Power", Range(0,10)) = 0 // Power of the outer glow
+        _OuterGlowExponent ("Outer Glow Exponent", Range(0,10)) = 0 // Exponent of the outer glow
 
-        _InvFresnelColor ("Inv Fresnel Color", Color) = (1,1,1,1)
-        _InvFresnelIntensity("Inv Fresnel Intensity", Range(0,10)) = 0
-        _InvFresnelRamp("Inv Fresnel Ramp", Range(0,10)) = 0
+        _InnerGlowColor ("Inner Glow Color", Color) = (1,1,1,1) // Color of the inner glow
+        _InnerGlowPower ("Inner Glow Power", Range(0,10)) = 0 // Power of the inner glow
+        _InnerGlowExponent ("Inner Glow Exponent", Range(0,10)) = 0 // Exponent of the inner glow
 
-        [Toggle] NORMAL_MAP ("Normal Mapping", float) = 0
-        _NormalMap ("Normal Map", 2D) = "white" {}
+        [Toggle] _UseNormalMap ("Use Normal Map", float) = 0 // Toggle for normal mapping
+        _NormalMap ("Normal Map", 2D) = "white" {} // Normal map texture
     }
     SubShader
     {
-        Tags { "RenderQueue"="Transparent" }
-        LOD 100
-        Blend SrcAlpha One
+        Tags { "RenderQueue"="Transparent" } // Set the render queue to transparent
+        LOD 100 // Set the level of detail
+        Blend SrcAlpha One // Set the blend mode
         Pass
         {
             CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #pragma multi_compile __ NORMAL_MAP_ON
-            #include "UnityCG.cginc"
+            #pragma vertex vert // Vertex shader
+            #pragma fragment frag // Fragment shader
+            #pragma multi_compile _USE_NORMAL_MAP // Compile-time directive for normal mapping
+            #include "UnityCG.cginc" // Include common shader code
 
+            // Define the input data structure
             struct appdata
             {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-                float3 normal : NORMAL;
-                float3 tangent : TANGENT;
+                float4 vertex : POSITION; // Vertex position
+                float2 uv : TEXCOORD0; // Texture coordinates
+                float3 normal : NORMAL; // Normal vector
+                float3 tangent : TANGENT; // Tangent vector
             };
 
+            // Define the output data structure
             struct v2f
             {
-                float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-                float3 normal : TEXCOORD1;
-                float3 viewDir : TEXCOORD2;
-                float3 tangent : TEXCOORD3;
-                float3 bitangent : TEXCOORD4;
+                float2 uv : TEXCOORD0; // Texture coordinates
+                float4 vertex : SV_POSITION; // Vertex position
+                float3 normal : TEXCOORD1; // Normal vector
+                float3 viewDir : TEXCOORD2; // View direction vector
+                float3 tangent : TEXCOORD3; // Tangent vector
+                float3 bitangent : TEXCOORD4; // Bitangent vector
             };
 
-            sampler2D _MainTex, _NormalMap, _DistortTex;
-            float4 _MainTex_ST, _FresnelColor, _InvFresnelColor;
+            // Define the texture samplers and variables
+            sampler2D _BaseTex, _NormalMap, _DistortionTex;
+            float4 _BaseTex_ST, _OuterGlowColor, _InnerGlowColor;
+            float _OuterGlowPower, _OuterGlowExponent, _DistortionStrength, _InnerGlowExponent, _InnerGlowPower;
 
-            float _FresnelIntensity, _FresnelRamp, _DistortIntensity, _InvFresnelRamp, _InvFresnelIntensity;
-
+            // Vertex shader
             v2f vert (appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.normal = UnityObjectToWorldNormal(v.normal);
+                o.vertex = UnityObjectToClipPos(v.vertex); // Convert the vertex position from object space to clip space
+                o.normal = UnityObjectToWorldNormal(v.normal); // Convert the normal vector from object space to world space
 
-                #if NORMAL_MAP_ON
-                    o.tangent = UnityObjectToWorldDir(v.tangent);
-                    o.bitangent = cross(o.tangent, o.normal);
+                // If normal mapping is enabled
+                #if _USE_NORMAL_MAP
+                    o.tangent = UnityObjectToWorldDir(v.tangent); // Convert the tangent vector from object space to world space
+                    o.bitangent = cross(o.tangent, o.normal); // Calculate the bitangent vector
                 #endif
 
-                o.viewDir = normalize(WorldSpaceViewDir(v.vertex));
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.viewDir = normalize(WorldSpaceViewDir(v.vertex)); // Calculate the view direction vector
+                o.uv = TRANSFORM_TEX(v.uv, _BaseTex); // Transform the texture coordinates
                 return o;
             }
 
+            // Fragment shader
             fixed4 frag (v2f i) : SV_Target
             {
-                float distort = tex2D(_DistortTex, i.uv + _Time.xx).r * tex2D(_MainTex, i.uv);
+                // Calculate the distortion value
+                float distortionValue = tex2D(_DistortionTex, i.uv + _Time.xx).r;
 
+                // Calculate the final normal vector
                 float3 finalNormal = i.normal;
-                #if NORMAL_MAP_ON
-                    float3 normalMap = UnpackNormal(tex2D(_NormalMap, i.uv));
-                    finalNormal = normalMap.r * i.tangent + normalMap.g * i.bitangent + normalMap.b * i.normal;
+                // If normal mapping is enabled
+                #if _USE_NORMAL_MAP
+                    float3 normalMap = UnpackNormal(tex2D(_NormalMap, i.uv)); // Unpack the normal map
+                    finalNormal = normalMap.r * i.tangent + normalMap.g * i.bitangent + normalMap.b * i.normal; // Calculate the final normal vector
                 #endif
 
-                float fresnelAmount = 1 - max(0,dot(finalNormal, i.viewDir));
-                fresnelAmount *= distort * _DistortIntensity;
-                fresnelAmount = pow(fresnelAmount, _FresnelRamp) * _FresnelIntensity;
-                float3 fresnelColor = fresnelAmount * _FresnelColor;
-    
-                float invfresnelAmount = max(0,dot(finalNormal, i.viewDir));
-                invfresnelAmount *= distort * _DistortIntensity;
-                invfresnelAmount = pow(invfresnelAmount, _InvFresnelRamp) * _InvFresnelIntensity;
-                float3 invfresnelColor = invfresnelAmount * _InvFresnelColor;
-                float3 finalColor = fresnelColor + invfresnelColor;
-                return fixed4(finalColor,1);
+                // Calculate the outer glow amount
+                float outerGlowAmount = 1 - max(0, dot(finalNormal, i.viewDir));
+                outerGlowAmount *= distortionValue * _DistortionStrength;
+                outerGlowAmount = pow(outerGlowAmount, _OuterGlowExponent) * _OuterGlowPower;
+                float3 outerGlowColor = outerGlowAmount * _OuterGlowColor;
+
+                // Calculate the inner glow amount
+                float innerGlowAmount = max(0, dot(finalNormal, i.viewDir));
+                innerGlowAmount *= distortionValue * _DistortionStrength;
+                innerGlowAmount = pow(innerGlowAmount, _InnerGlowExponent) * _InnerGlowPower;
+                float3 innerGlowColor = innerGlowAmount * _InnerGlowColor;
+
+                // Calculate the final color
+                float3 finalColor = outerGlowColor + innerGlowColor;
+                return fixed4(finalColor, 1); // Return the final color
             }
             ENDCG
         }
