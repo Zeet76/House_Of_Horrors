@@ -35,7 +35,7 @@ Material:
     m_Floats:
     - _EdgeWidth: 0.9
     - _Slider: 0.73
-    - _Val: 1.0918202
+    - _Val: 1.1251717
     m_Colors:
     - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0.6666667}
