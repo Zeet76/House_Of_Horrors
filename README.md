@@ -33,8 +33,8 @@ Vertex/Fragment Shader (Fresnel) * Vertex/Fragment Shader (Hologram) * Vertex/Fr
 
 
 ## Makers
-- Ademar Valente
-- Henrique Azevedo
-- José Lourenço
+- [Ademar Valente](https://github.com/ademar1k82)
+- [Henrique Azevedo](https://github.com/rkt2902)
+- [José Lourenço](https://github.com/Zeet76)
 
  
