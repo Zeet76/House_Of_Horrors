@@ -32,7 +32,7 @@ Vertex/Fragment Shader (Fresnel) * Vertex/Fragment Shader (Hologram) * Vertex/Fr
 </div>
 
 
-## Makers
+## Dev Team
 - [Ademar Valente](https://github.com/ademar1k82)
 - [Henrique Azevedo](https://github.com/rkt2902)
 - [José Lourenço](https://github.com/Zeet76)
